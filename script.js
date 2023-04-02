@@ -19,7 +19,6 @@ const gameBoard = {
 const inputMarkers = () => {
   const blocks = document.querySelectorAll('.blocks');
   const arr = [...blocks];
-  const rand = Math.floor(Math.random() * 10);
   let emptyArr = gameBoard.board;
 
   const inputX = () => {
@@ -27,8 +26,15 @@ const inputMarkers = () => {
       item.addEventListener('click', () => {
         if (item.innerHTML == false) {
           item.innerHTML = 'X';
-        } else {
-          item.innerHTML = item.innerHTML;
+          const rand = Math.floor(Math.random() * arr.length);
+          for (let i = 0; i < arr.length; i++) {
+            if (arr[rand].innerHTML == 'X' || arr[rand].innerHTML == 'O') {
+              continue;
+            } else {
+              arr[rand].innerHTML = 'O';
+              console.log(arr[rand]);
+            }
+          }
         }
       });
     });
