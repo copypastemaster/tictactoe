@@ -1,0 +1,32 @@
+--Clicking on a grid would input 'X', and the AI would randomly pick on different grid with 'O'
+--Once there's a 3 consecutive inputs(X/O), there's a winner.
+--PlayerScore ++ / AIScore ++
+--Repeat the game until Player or AI wins 3 times.
+--Apply a button for restart
+
+Logic:
+-check to see if a 'block' contains a marker.
+
+To win, we need 3 in a row of markers,
+if 3 rows is not possible, and all spots contain a mark,
+it's a draw.
+
+suppose theres a 2D array:
+
+Straight winning conditions:
+
+-[0][0], [0][1], [0][2]
+
+-[1][0], [1][1], [1][2]
+
+-[2][0], [2][1], [2][2]
+
+Diagonal winning conditions:
+
+-[0][0], [1][1], [2][2]
+
+-[2][0], [1][1], [0][2]
+
+Questions:
+
+- How do I check if the board has a row of markers?
