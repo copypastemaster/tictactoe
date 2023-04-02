@@ -26,18 +26,21 @@ const inputMarkers = () => {
       item.addEventListener('click', () => {
         if (item.innerHTML == false) {
           item.innerHTML = 'X';
-          const rand = Math.floor(Math.random() * arr.length);
-          for (let i = 0; i < arr.length; i++) {
-            if (arr[rand].innerHTML == 'X' || arr[rand].innerHTML == 'O') {
-              continue;
-            } else {
-              arr[rand].innerHTML = 'O';
-              console.log(arr[rand]);
-            }
-          }
+          test();
         }
       });
     });
+  };
+
+  const test = () => {
+    const rand = Math.floor(Math.random() * arr.length);
+    const randomss = arr[rand];
+    for (let i = 0; i <= arr.length; i++) {
+      if (arr[i].innerHTML == false) {
+        arr[i].innerHTML = 'O';
+        randomss = arr[i];
+      }
+    }
   };
 
   return { inputX };
@@ -46,6 +49,13 @@ const inputMarkers = () => {
 const displayController = () => {
   const me = inputMarkers();
   me.inputX();
+  console.log(gameBoard.board);
 };
 
 displayController();
+
+// if (arr[rand].innerHTML == false) {
+//   arr[rand].innerHTML = 'O';
+// } else {
+//   break;
+// }
