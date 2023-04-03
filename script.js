@@ -7,19 +7,16 @@ const six = document.querySelector('.six');
 const seven = document.querySelector('.seven');
 const eight = document.querySelector('.eight');
 const nine = document.querySelector('.nine');
+const boarder = document.querySelector('#gameBoard');
 
 const gameBoard = {
-  board: [
-    [one, two, three],
-    [four, five, six],
-    [seven, eight, nine],
-  ],
+  winningCondition1: [one, two, three],
+  winningCondition2: [four, five, six],
 };
 
 const inputMarkers = () => {
   const blocks = document.querySelectorAll('.blocks');
   const arr = [...blocks];
-  let emptyArr = gameBoard.board;
 
   const inputX = () => {
     arr.forEach((item) => {
@@ -33,12 +30,14 @@ const inputMarkers = () => {
   };
 
   const test = () => {
-    const rand = Math.floor(Math.random() * arr.length);
+    const rand = Math.floor(Math.random() * 2);
     const randomss = arr[rand];
-    for (let i = 0; i <= arr.length; i++) {
+
+    for (let i = 0; i < arr.length; i += 1) {
       if (arr[i].innerHTML == false) {
         arr[i].innerHTML = 'O';
-        randomss = arr[i];
+        return arr[i];
+        // randomss = arr[i];
       }
     }
   };
@@ -49,11 +48,13 @@ const inputMarkers = () => {
 const displayController = () => {
   const me = inputMarkers();
   me.inputX();
-  console.log(gameBoard.board);
+
+  gameBoard.winningCondition1.forEach((item) => {
+    console.log(item.textContent);
+  });
 };
 
 displayController();
-
 // if (arr[rand].innerHTML == false) {
 //   arr[rand].innerHTML = 'O';
 // } else {
