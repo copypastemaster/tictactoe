@@ -32,8 +32,8 @@ function inputMarkers(input) {
     const _2dArr = {
       randomCombinations: [
         [one, two, three, four, five, six, seven, eight, nine],
-        [five, three, one, four, two, seven, six, nine, eight],
-        [three, five, six, two, one, nine, eight, four, seven],
+        [one, four, seven, two, five, eight, three, six, nine],
+        [one, five, nine, three, seven, eight, two, four, six],
       ],
     };
 
@@ -123,8 +123,53 @@ function inputMarkers(input) {
       two.innerHTML == 'X' &&
       five.innerHTML == 'X' &&
       eight.innerHTML == 'X'
-    )
+    ) {
       console.log('X wins!');
+    }
+
+    if (
+      three.innerHTML == 'O' &&
+      six.innerHTML == 'O' &&
+      nine.innerHTML == 'O'
+    ) {
+      console.log('O wins!');
+    } else if (
+      three.innerHTML == 'X' &&
+      six.innerHTML == 'X' &&
+      nine.innerHTML == 'X'
+    ) {
+      console.log('X wins!');
+    }
+
+    // diagonal wins
+
+    if (
+      one.innerHTML == 'O' &&
+      five.innerHTML == 'O' &&
+      nine.innerHTML == 'O'
+    ) {
+      console.log('O wins!');
+    } else if (
+      one.innerHTML == 'X' &&
+      five.innerHTML == 'X' &&
+      nine.innerHTML == 'X'
+    ) {
+      console.log('X wins!');
+    }
+
+    if (
+      three.innerHTML == 'O' &&
+      five.innerHTML == 'O' &&
+      seven.innerHTML == 'O'
+    ) {
+      console.log('O wins!');
+    } else if (
+      three.innerHTML == 'X' &&
+      five.innerHTML == 'X' &&
+      seven.innerHTML == 'X'
+    ) {
+      console.log('X wins!');
+    }
   };
 
   return { inputX };
