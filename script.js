@@ -1,29 +1,4 @@
-const one = document.querySelector('.one');
-const two = document.querySelector('.two');
-const three = document.querySelector('.three');
-const four = document.querySelector('.four');
-const five = document.querySelector('.five');
-const six = document.querySelector('.six');
-const seven = document.querySelector('.seven');
-const eight = document.querySelector('.eight');
-const nine = document.querySelector('.nine');
-const boarder = document.querySelector('#gameBoard');
-
-const gameBoard = {
-  // if any of the array has complete 'O' or 'X', log
-  winningCondition: [
-    [one, two, three],
-    // [four, five, six],
-    // [seven, eight, nine],
-    // [one, five, nine],
-    // [seven, five, three],
-    // [one, four, seven],
-    // [two, five, eight],
-    // [three, six, nine],
-  ],
-};
-
-const inputMarkers = () => {
+function inputMarkers(input) {
   const blocks = document.querySelectorAll('.blocks');
   const arr = [...blocks];
 
@@ -31,8 +6,7 @@ const inputMarkers = () => {
     arr.forEach((item) => {
       item.addEventListener('click', () => {
         if (item.innerHTML == false) {
-          gameCheck();
-          item.innerHTML = 'X';
+          item.innerHTML = input;
           test();
         }
       });
@@ -40,9 +14,6 @@ const inputMarkers = () => {
   };
 
   const test = () => {
-    const rand = Math.floor(Math.random() * 2);
-    const randomss = arr[rand];
-
     for (let i = 0; i < arr.length; i += 1) {
       if (arr[i].innerHTML == false) {
         arr[i].innerHTML = 'O';
@@ -52,22 +23,17 @@ const inputMarkers = () => {
     }
   };
 
-  const gameCheck = () => {
-    gameBoard.winningCondition.forEach((item) => {
-      item.forEach((items) => {
-        if (items.innerHTML == 'O') {
-          console.log('O is the winner!');
-        }
-      });
-    });
-  };
-
   return { inputX };
-};
+}
 
-const displayController = () => {
-  const me = inputMarkers();
+function displayController() {
+  const me = inputMarkers('X');
   me.inputX();
-};
+}
 
 displayController();
+// if (arr[rand].innerHTML == false) {
+//   arr[rand].innerHTML = 'O';
+// } else {
+//   break;
+// }
