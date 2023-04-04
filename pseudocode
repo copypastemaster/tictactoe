@@ -15,11 +15,9 @@ suppose theres a 2D array:
 
 Straight winning conditions:
 
--[0][0], [0][1], [0][2]
-
--[1][0], [1][1], [1][2]
-
--[2][0], [2][1], [2][2]
+[one, two, three]
+[four, five, six]
+[seven, eight, nine]
 
 Diagonal winning conditions:
 
