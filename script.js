@@ -1,4 +1,13 @@
 function inputMarkers(input) {
+  const one = document.querySelector('.one');
+  const two = document.querySelector('.two');
+  const three = document.querySelector('.three');
+  const four = document.querySelector('.four');
+  const five = document.querySelector('.five');
+  const six = document.querySelector('.six');
+  const seven = document.querySelector('.seven');
+  const eight = document.querySelector('.eight');
+  const nine = document.querySelector('.nine');
   const blocks = document.querySelectorAll('.blocks');
   const arr = [...blocks];
 
@@ -15,24 +24,12 @@ function inputMarkers(input) {
   };
 
   const inputO = () => {
-    const one = document.querySelector('.one');
-    const two = document.querySelector('.two');
-    const three = document.querySelector('.three');
-
-    const four = document.querySelector('.four');
-    const five = document.querySelector('.five');
-    const six = document.querySelector('.six');
-
-    const seven = document.querySelector('.seven');
-    const eight = document.querySelector('.eight');
-    const nine = document.querySelector('.nine');
-
     const randoms = Math.floor(Math.random() * 3);
 
     const _2dArr = {
       randomCombinations: [
-        [one, two, three, four, five, six, seven, eight, nine],
-        [one, four, seven, two, five, eight, three, six, nine],
+        [three, two, one, four, five, six, seven, eight, nine],
+        [seven, four, one, two, five, eight, three, six, nine],
         [one, five, nine, three, seven, eight, two, four, six],
       ],
     };
@@ -48,18 +45,6 @@ function inputMarkers(input) {
   };
 
   const gameChecker = () => {
-    const one = document.querySelector('.one');
-    const two = document.querySelector('.two');
-    const three = document.querySelector('.three');
-
-    const four = document.querySelector('.four');
-    const five = document.querySelector('.five');
-    const six = document.querySelector('.six');
-
-    const seven = document.querySelector('.seven');
-    const eight = document.querySelector('.eight');
-    const nine = document.querySelector('.nine');
-
     // row straights
     if (
       one.innerHTML == 'O' &&
@@ -141,7 +126,7 @@ function inputMarkers(input) {
       console.log('X wins!');
     }
 
-    // diagonal wins
+    // diagonals
 
     if (
       one.innerHTML == 'O' &&
