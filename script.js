@@ -10,8 +10,17 @@ const nine = document.querySelector('.nine');
 const boarder = document.querySelector('#gameBoard');
 
 const gameBoard = {
-  winningCondition1: [one, two, three],
-  winningCondition2: [four, five, six],
+  // if any of the array has complete 'O' or 'X', log
+  winningCondition: [
+    [one, two, three],
+    // [four, five, six],
+    // [seven, eight, nine],
+    // [one, five, nine],
+    // [seven, five, three],
+    // [one, four, seven],
+    // [two, five, eight],
+    // [three, six, nine],
+  ],
 };
 
 const inputMarkers = () => {
@@ -22,6 +31,7 @@ const inputMarkers = () => {
     arr.forEach((item) => {
       item.addEventListener('click', () => {
         if (item.innerHTML == false) {
+          gameCheck();
           item.innerHTML = 'X';
           test();
         }
@@ -42,21 +52,22 @@ const inputMarkers = () => {
     }
   };
 
+  const gameCheck = () => {
+    gameBoard.winningCondition.forEach((item) => {
+      item.forEach((items) => {
+        if (items.innerHTML == 'O') {
+          console.log('O is the winner!');
+        }
+      });
+    });
+  };
+
   return { inputX };
 };
 
 const displayController = () => {
   const me = inputMarkers();
   me.inputX();
-
-  gameBoard.winningCondition1.forEach((item) => {
-    console.log(item.textContent);
-  });
 };
 
 displayController();
-// if (arr[rand].innerHTML == false) {
-//   arr[rand].innerHTML = 'O';
-// } else {
-//   break;
-// }
