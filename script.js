@@ -10,15 +10,17 @@ function inputMarkers(input) {
   const nine = document.querySelector('.nine');
   const blocks = document.querySelectorAll('.blocks');
   const arr = [...blocks];
+  const player = document.querySelector('#player');
+  const ai = document.querySelector('#ai');
 
   const inputX = () => {
     arr.forEach((item) => {
-      item.addEventListener('click', () => {
+      item.addEventListener('click', function clicks(e) {
         if (item.innerHTML == false) {
           item.innerHTML = input;
-          setTimeout(inputO, 500);
+          setTimeout(inputO, 600);
+          gameChecker();
         }
-        gameChecker();
       });
     });
   };
@@ -51,7 +53,15 @@ function inputMarkers(input) {
       two.innerHTML == 'O' &&
       three.innerHTML == 'O'
     ) {
-      console.log('O wins!');
+      ai.innerHTML++;
+      gameRestart();
+    } else if (
+      one.innerHTML == 'X' &&
+      two.innerHTML == 'X' &&
+      three.innerHTML == 'X'
+    ) {
+      player.innerHTML++;
+      gameRestart();
     }
 
     if (
@@ -59,13 +69,15 @@ function inputMarkers(input) {
       five.innerHTML == 'O' &&
       six.innerHTML == 'O'
     ) {
-      console.log('O wins!');
+      ai.innerHTML++;
+      gameRestart();
     } else if (
       four.innerHTML == 'X' &&
       five.innerHTML == 'X' &&
       six.innerHTML == 'X'
     ) {
-      console.log('X wins!');
+      player.innerHTML++;
+      gameRestart();
     }
 
     if (
@@ -73,13 +85,15 @@ function inputMarkers(input) {
       eight.innerHTML == 'O' &&
       nine.innerHTML == 'O'
     ) {
-      console.log('O wins!');
+      ai.innerHTML++;
+      gameRestart();
     } else if (
       seven.innerHTML == 'X' &&
       eight.innerHTML == 'X' &&
       nine.innerHTML == 'X'
     ) {
-      console.log('X wins!');
+      player.innerHTML++;
+      gameRestart();
     }
 
     // column straights
@@ -89,13 +103,15 @@ function inputMarkers(input) {
       four.innerHTML == 'O' &&
       seven.innerHTML == 'O'
     ) {
-      console.log('O wins!');
+      ai.innerHTML++;
+      gameRestart();
     } else if (
       one.innerHTML == 'X' &&
       four.innerHTML == 'X' &&
       seven.innerHTML == 'X'
     ) {
-      console.log('X wins!');
+      player.innerHTML++;
+      gameRestart();
     }
 
     if (
@@ -103,13 +119,15 @@ function inputMarkers(input) {
       five.innerHTML == 'O' &&
       eight.innerHTML == 'O'
     ) {
-      console.log('O wins!');
+      ai.innerHTML++;
+      gameRestart();
     } else if (
       two.innerHTML == 'X' &&
       five.innerHTML == 'X' &&
       eight.innerHTML == 'X'
     ) {
-      console.log('X wins!');
+      player.innerHTML++;
+      gameRestart();
     }
 
     if (
@@ -117,13 +135,15 @@ function inputMarkers(input) {
       six.innerHTML == 'O' &&
       nine.innerHTML == 'O'
     ) {
-      console.log('O wins!');
+      ai.innerHTML++;
+      gameRestart();
     } else if (
       three.innerHTML == 'X' &&
       six.innerHTML == 'X' &&
       nine.innerHTML == 'X'
     ) {
-      console.log('X wins!');
+      player.innerHTML++;
+      gameRestart();
     }
 
     // diagonals
@@ -133,13 +153,15 @@ function inputMarkers(input) {
       five.innerHTML == 'O' &&
       nine.innerHTML == 'O'
     ) {
-      console.log('O wins!');
+      ai.innerHTML++;
+      gameRestart();
     } else if (
       one.innerHTML == 'X' &&
       five.innerHTML == 'X' &&
       nine.innerHTML == 'X'
     ) {
-      console.log('X wins!');
+      player.innerHTML++;
+      gameRestart();
     }
 
     if (
@@ -147,14 +169,44 @@ function inputMarkers(input) {
       five.innerHTML == 'O' &&
       seven.innerHTML == 'O'
     ) {
-      console.log('O wins!');
+      ai.innerHTML++;
+      gameRestart();
     } else if (
       three.innerHTML == 'X' &&
       five.innerHTML == 'X' &&
       seven.innerHTML == 'X'
     ) {
-      console.log('X wins!');
+      player.innerHTML++;
+      gameRestart();
     }
+  };
+
+  const gameRestart = () => {
+    const para = document.querySelector('#result');
+
+    arr.forEach((item) => {
+      item.innerHTML = '';
+    });
+
+    if (ai.innerHTML == 3) {
+      para.innerHTML = 'Overall winner is AI!';
+      gameOver();
+      return;
+    } else if (player.innerHTML == 3) {
+      para.innerHTML = 'Overall winner is you!';
+      gameOver();
+      return;
+    }
+  };
+
+  const gameOver = () => {
+    player.innerHTML = 0;
+    ai.innerHTML = 0;
+
+    arr.forEach((item) => {
+      item.innerHTML = '';
+      item.removeEventListener('click', clicks());
+    });
   };
 
   return { inputX };
