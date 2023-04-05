@@ -12,6 +12,7 @@ function inputMarkers(input) {
   const arr = [...blocks];
   const player = document.querySelector('#player');
   const ai = document.querySelector('#ai');
+  const para = document.querySelector('#result');
 
   const inputX = () => {
     arr.forEach((item) => {
@@ -30,7 +31,7 @@ function inputMarkers(input) {
 
     const _2dArr = {
       randomCombinations: [
-        [three, two, one, four, five, six, seven, eight, nine],
+        [one, two, three, four, five, six, seven, eight, nine],
         [seven, four, one, two, five, eight, three, six, nine],
         [one, five, nine, three, seven, eight, two, four, six],
       ],
@@ -182,8 +183,6 @@ function inputMarkers(input) {
   };
 
   const gameRestart = () => {
-    const para = document.querySelector('#result');
-
     arr.forEach((item) => {
       item.innerHTML = '';
     });
@@ -199,17 +198,40 @@ function inputMarkers(input) {
     }
   };
 
+  const allReset = () => {
+    arr.forEach((item) => {
+      item.innerHTML = '';
+    });
+
+    ai.innerHTML = 0;
+    player.innerHTML = 0;
+  };
+
   const gameOver = () => {
     player.innerHTML = 0;
     ai.innerHTML = 0;
 
     arr.forEach((item) => {
       item.innerHTML = '';
-      item.removeEventListener('click', clicks());
     });
   };
 
-  return { inputX };
+  const draw = () => {
+    const test = ai.value;
+    const prevVal = null;
+
+    const test2 = player.value;
+    const prevVals = null;
+
+    if (test == prevVal && test2 == prevVals) {
+      para.innerHTML = "It's a draw!";
+      ai.value = ai.value;
+      player.value = player.value;
+      gameRestart();
+    }
+  };
+
+  return { inputX, allReset };
 }
 
 function displayController() {
@@ -217,9 +239,25 @@ function displayController() {
   me.inputX();
 }
 
-displayController();
-// if (arr[rand].innerHTML == false) {
-//   arr[rand].innerHTML = 'O';
-// } else {
-//   break;
-// }
+const start = document.querySelector('#start');
+const restart = document.querySelector('#restart');
+
+start.addEventListener('click', displayController);
+
+const newRestart = inputMarkers('x');
+restart.addEventListener('click', newRestart.allReset);
+// var someValue = 1;
+// var prevVal = null;
+// var _myInterval = setInterval(function () {
+//   if (prevVal == someValue) {
+//     console.log('No change for 2 second', someValue);
+//   } else {
+//     console.log(
+//       'Value was changed between past 2 second prev: ',
+//       prevVal,
+//       ' New: ',
+//       someValue
+//     );
+//     prevVal = someValue;
+//   }
+// }, 2000);

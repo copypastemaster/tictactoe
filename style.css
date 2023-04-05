@@ -1,4 +1,7 @@
-
+#forms {
+  display: flex;
+  justify-content: space-around;
+}
 
 #grids {
   width: 40%;
