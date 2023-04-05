@@ -14,6 +14,9 @@ function inputMarkers(input) {
   const ai = document.querySelector('#ai');
   const para = document.querySelector('#result');
 
+  const start = document.querySelector('#start');
+  const restart = document.querySelector('#restart');
+
   const inputX = () => {
     arr.forEach((item) => {
       item.addEventListener('click', function clicks(e) {
@@ -231,7 +234,10 @@ function inputMarkers(input) {
     }
   };
 
-  return { inputX, allReset };
+  return {
+    inputX,
+    allReset,
+  };
 }
 
 function displayController() {
@@ -239,25 +245,7 @@ function displayController() {
   me.inputX();
 }
 
-const start = document.querySelector('#start');
-const restart = document.querySelector('#restart');
+const newRestart = inputMarkers('x');
 
 start.addEventListener('click', displayController);
-
-const newRestart = inputMarkers('x');
 restart.addEventListener('click', newRestart.allReset);
-// var someValue = 1;
-// var prevVal = null;
-// var _myInterval = setInterval(function () {
-//   if (prevVal == someValue) {
-//     console.log('No change for 2 second', someValue);
-//   } else {
-//     console.log(
-//       'Value was changed between past 2 second prev: ',
-//       prevVal,
-//       ' New: ',
-//       someValue
-//     );
-//     prevVal = someValue;
-//   }
-// }, 2000);
